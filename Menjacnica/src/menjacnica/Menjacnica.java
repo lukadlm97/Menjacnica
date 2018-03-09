@@ -15,6 +15,12 @@ public class Menjacnica implements menjacnica.interfejsi.Menjacnica{
 				valute.get(i).getKursneListe().add(kurs);
 			}
 		}
+		for(int i=0;i<valute.size();i++) {
+			if(valute.get(i).getNazivValute().equals(valuta.getNazivValute()) ) {
+				valute.get(i).setKursneListe(kurs);
+			}
+		}
+		
 	}
 
 	@Override
@@ -38,13 +44,27 @@ public class Menjacnica implements menjacnica.interfejsi.Menjacnica{
 			}
 		}
 		
+		boolean obrisan1=false;
+		for(int i=0;i<valute.size();i++) {
+			if(valute.get(i).getNazivValute().equals(valuta.getNazivValute())) {
+				int k=valute.get(i).getKursneListe().size();
+				for(int j=0;j<k;j++) {
+					if(valute.get(i).getKursneListe().get(j).getDatumIzdanjaListe().equals(datumZaBrisanje)) {
+						valute.remove(valute.get(i));
+						obrisan1=true;
+						break;
+					}
+				}
+				if(obrisan1==true)
+					break;
+			}
+		}
 	}
 
 	@Override
 	public Kurs vracanjeKursaNaOdredjeniDan(GregorianCalendar datumZaDobijanjeKursa, Valuta valuta) {
 		if(datumZaDobijanjeKursa==null || valuta==null)
 			throw new RuntimeException("Datum za dobijanje kursa je null ili je valuta null. ");
-		
 		Kurs trazeniKurs=new Kurs();
 		trazeniKurs=null;
 		for(int i=0;i<valute.size();i++) {
