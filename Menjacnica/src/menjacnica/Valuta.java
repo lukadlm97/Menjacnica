@@ -31,11 +31,11 @@ public class Valuta {
 	public LinkedList<Kurs> getKursneListe() {
 		return kursneListe;
 	}
-	public void setKursneListe(LinkedList<Kurs> kursneListe) {
-		if(kursneListe==null) {
+	public void setKursneListe(Kurs kursnaLista) {
+		if(kursnaLista==null) {
 			throw new RuntimeException("Lista sa kursnim listama za odgovarajucu valutu je prazna. ");
 		}
-		this.kursneListe = kursneListe;
+		this.kursneListe.add(kursnaLista);
 	}
 	@Override
 	public int hashCode() {
