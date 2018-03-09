@@ -12,6 +12,8 @@ public class Valuta {
 		return nazivValute;
 	}
 	public void setNazivValute(String nazivValute) {
+		if(nazivValute==null)
+			throw new RuntimeException("Naziv valute je null. ");
 		this.nazivValute = nazivValute;
 	}
 	
@@ -20,6 +22,8 @@ public class Valuta {
 		return skracenicaValute;
 	}
 	public void setSkracenicaValute(String skracenicaValute) {
+		if(skracenicaValute==null || skracenicaValute.length()>5)
+			throw new RuntimeException("Skracenica valute je null ili je duza od 5 karaktera. ");
 		this.skracenicaValute = skracenicaValute;
 	}
 	
@@ -28,6 +32,9 @@ public class Valuta {
 		return kursneListe;
 	}
 	public void setKursneListe(LinkedList<Kurs> kursneListe) {
+		if(kursneListe==null) {
+			throw new RuntimeException("Lista sa kursnim listama za odgovarajucu valutu je prazna. ");
+		}
 		this.kursneListe = kursneListe;
 	}
 	@Override
